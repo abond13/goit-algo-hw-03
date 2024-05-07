@@ -14,18 +14,20 @@ def draw_koch_curve(order, size=300):
     window.bgcolor("white")
 
     t = turtle.Turtle()
-    t.speed(0)  
+    t.speed(0)
     t.penup()
     t.goto(-size / 2, 0)
     t.pendown()
 
-    koch_curve(t, order, size)
+    for _ in range(3):
+        koch_curve(t, order, size)
+        t.left(-120)
 
     window.mainloop()
 
 def main():
-    parser = argparse.ArgumentParser(description='Koch curve')
-    parser.add_argument('-l', '--level', required=True, type=str, help='Input dir')
+    parser = argparse.ArgumentParser(description='Koch snowflake')
+    parser.add_argument('-l', '--level', required=True, type=int, help='Input dir')
     args = parser.parse_args()
     draw_koch_curve(args.level)
 
